@@ -10,5 +10,6 @@ class Promotion(Base):
     promoCode = Column(Integer, primary_key=True, index=True, autoincrement=True)
     discountMultiplier = Column(String(100), unique=True, nullable=True)
     numberofUses = Column(DECIMAL(4, 2), nullable=False, server_default='0.0')
+    expirationDate = Column(DateTime, default=func.now())
 
     
