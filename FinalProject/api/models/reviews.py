@@ -1,16 +1,15 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL, DATETIME
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from datetime import datetime
 from ..dependencies.database import Base
 
 
-class Recipe(Base):
-    __tablename__ = "recipes"
+class Review(Base):
+    __tablename__ = "reviews"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    sandwich_id = Column(Integer, ForeignKey("sandwiches.id"))
-    resource_id = Column(Integer, ForeignKey("resources.id"))
-    amount = Column(Integer, index=True, nullable=False, server_default='0.0')
+    review_id = Column(Integer, primary_key=True, index=True) # Primary key tracking what number review this is out of all reviews
+    customer_id = Column(Integer, ForeignKey("customers.customer_id"), nullable=False) # ID to connect the review to users account
+    user_name = Column(String, nullable=False) # Name (First, Last) of user
+    rating = Column(Integer, nullable=False) # How many stars out of 5
+    review = Column(String, nullable=True)  # User written review
 
-    sandwich = relationship("Sandwich", back_populates="recipes")
-    resource = relationship("Resource", back_populates="recipes")
+    customer = relationship("Customer", back_populates="reviews")
