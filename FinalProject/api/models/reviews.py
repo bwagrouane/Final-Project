@@ -12,4 +12,4 @@ class Review(Base):
     rating = Column(Integer, nullable=False) # How many stars out of 5
     review = Column(String, nullable=True)  # User written review
 
-    customer = relationship("Customer", back_populates="reviews")
+    # customer = relationship("Customer", back_populates="reviews")
