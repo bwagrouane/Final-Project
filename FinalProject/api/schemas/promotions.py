@@ -3,22 +3,22 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class SandwichBase(BaseModel):
-    sandwich_name: str
-    price: float
+class PromotionBase(BaseModel):
+    discountMultiplier: str
+    numberofUses: float
 
 
-class SandwichCreate(SandwichBase):
+class PromotionCreate(PromotionBase):
     pass
 
 
-class SandwichUpdate(BaseModel):
-    sandwich_name: Optional[str] = None
-    price: Optional[float] = None
+class PromotionUpdate(BaseModel):
+    discountMultiplier: Optional[str] = None
+    numberofUses: Optional[float] = None
 
 
-class Sandwich(SandwichBase):
-    id: int
+class Promotion(PromotionBase):
+    promoCode: int
 
     class ConfigDict:
         from_attributes = True
