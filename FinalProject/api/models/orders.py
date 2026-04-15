@@ -13,4 +13,3 @@ class Order(Base):
     description = Column(String(300)) #Will contain order items and total
     card_info = Column(Integer, nullable=False)
 
-    order_details = relationship("OrderDetail", back_populates="order")
