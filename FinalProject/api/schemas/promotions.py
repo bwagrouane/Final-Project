@@ -6,6 +6,7 @@ from pydantic import BaseModel
 class PromotionBase(BaseModel):
     discountMultiplier: str
     numberofUses: float
+    expirationDate: datetime
 
 
 class PromotionCreate(PromotionBase):
@@ -22,3 +23,5 @@ class Promotion(PromotionBase):
 
     class ConfigDict:
         from_attributes = True
+
+
