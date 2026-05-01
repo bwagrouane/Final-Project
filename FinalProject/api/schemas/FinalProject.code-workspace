@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "group_bio_template",
+			"path": "../../group_bio_template"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "FinalProject"
+	}
+}
