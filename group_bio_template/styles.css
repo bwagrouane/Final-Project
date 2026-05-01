@@ -1,0 +1,124 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f0f0f;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header section styling */
+header {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 50%, #0f0f0f 100%),
+    url("img/cooks.jpg");
+    background-position: center 50%;
+    background-size: 20% auto;
+    background-size: cover;
+    height: 370px;
+    display: flex;
+    overflow: hidden;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+header h1 {
+    margin: 0 0 15px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.logo-wrap {
+    height: 200px; /* fixed logo area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styling for team logo image */
+.team-logo {
+    max-width: 320px; /* Adjust the size as needed */
+    width: 600px;
+    height: 500px;
+    display: block;
+}
+
+/* Menu button styling */
+header nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 0;
+}
+
+header nav button {
+    background: #c61200;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 11px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(214, 36, 8, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+header nav button:hover {
+    background: #0056b3;
+}
+
+/* Flex container for team bios and vision sections */
+.container {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Card styling for individual team bios */
+.card {
+    background: white;
+    border-color: #c61200;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    flex: 1 1 calc(30% - 40px);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+h2 {
+    margin: 0 0 10px;
+}
+
+/* Initially hide bio details */
+.bio {
+    display: none;
+    margin-top: 10px;
+    color: #555;
+}
+
+/* Button styling */
+button {
+    background: #c61200;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
