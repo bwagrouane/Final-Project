@@ -23,5 +23,6 @@ class Order(OrderBase):
     order_date: datetime
     status: OrderStatus
 
-    class ConfigDict:
-        from_attributes = True
+    model_config = {
+        "from_attributes": True
+    }
