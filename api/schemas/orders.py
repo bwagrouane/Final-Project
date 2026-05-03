@@ -5,12 +5,13 @@ from pydantic import BaseModel
 from ..models.orders import OrderStatus
 
 
-class OrderBase(BaseModel):
-    cost: Decimal
+class OrderItemCreate(BaseModel):
+    item_id: int
+    quantity: int
 
 
-class OrderCreate(OrderBase):
-    pass
+class OrderCreate(BaseModel):
+    items: list[OrderItemCreate]
 
 
 class OrderUpdate(BaseModel):
@@ -18,9 +19,10 @@ class OrderUpdate(BaseModel):
     status: Optional[OrderStatus] = None
 
 
-class Order(OrderBase):
+class Order(BaseModel):
     id: int
     order_date: datetime
+    cost: Decimal
     status: OrderStatus
 
     model_config = {

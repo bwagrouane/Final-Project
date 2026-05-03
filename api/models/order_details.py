@@ -12,4 +12,4 @@ class OrderDetail(Base):
     quantity = Column(Integer, nullable=False)
 
     order = relationship("Order", back_populates="order_details")
-    item = relationship("Item", back_populates="order_details") 
+    item = relationship("Item", back_populates="order_details")
