@@ -2,10 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from .config import conf
 
-# IF YOU WANT TO SEE IT ON YOUR LOCAL MYSQL UNCOMMENT BELOW VVVVV
+# IF YOU WANT TO SEE IT ON YOUR LOCAL MYSQL UNCOMMENT LINE BELOW VVVVV
 # SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{conf.user}:{quote_plus(conf.password)}@{conf.host}:{conf.port}/{conf.database}?charset=utf8mb4"
 
-# CURRENTLY ON A SHARED SQLITE FILE, COMMENT BELOW TO SWITCH TO LOCAL VVVVV
+# CURRENTLY ON A SHARED SQLITE FILE, COMMENT LINE BELOW TO SWITCH TO LOCAL VVVVV
 SQLALCHEMY_DATABASE_URL = "sqlite:///./warehouse_api.db"
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
