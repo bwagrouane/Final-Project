@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
 from ..models import order_details as model
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import func
 
 
 def create(db: Session, request):
@@ -67,3 +68,14 @@ def delete(db: Session, item_id):
         error = str(e.__dict__['orig'])
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+def total_items_sold(db: Session):
+    return db.query(func.sum(model.OrderDetail.quantity)).scalar()
+
+def items_sold_by_day(db: Session, day):
+    return (
+        db.query(func.sum(model.OrderDetail.quantity))
+        .join(model.Order)
+        .filter(func.date(model.Order.order_date) == day)
+        .scalar()
+    ) 
