@@ -14,8 +14,12 @@ def create_item(item: schemas.ItemCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=list[schemas.Item])
-def read_items(db: Session = Depends(get_db)):
-    return items.read_all(db)
+def read_items(
+    min_price: float | None = None,
+    max_price: float | None = None,
+    db: Session = Depends(get_db)
+):
+    return items.read_all(db, min_price=min_price, max_price=max_price)
 
 
 @router.get("/{item_id}", response_model=schemas.Item)

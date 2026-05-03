@@ -16,8 +16,13 @@ def create(db: Session, item):
     return db_item
 
 
-def read_all(db: Session):
-    return db.query(Item).all()
+def read_all(db: Session, min_price: float | None = None, max_price: float | None = None):
+    query = db.query(Item)
+    if min_price is not None:
+        query = query.filter(Item.price >= min_price)
+    if max_price is not None:
+        query = query.filter(Item.price <= max_price)
+    return query.all()
 
 
 def read_one(db: Session, item_id):
