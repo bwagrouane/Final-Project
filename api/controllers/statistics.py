@@ -25,3 +25,25 @@ def read_items_sold_by_day(db: Session, order_date):
         total = 0
 
     return {"date": order_date, "items_sold": total}
+
+
+def read_total_revenue(db: Session):
+    total = db.query(func.sum(Order.cost)).scalar()
+
+    if total is None:
+        total = 0
+
+    return {"total_revenue": total}
+
+
+def read_daily_revenue(db: Session, order_date):
+    total = (
+        db.query(func.sum(Order.cost))
+        .filter(func.date(Order.order_date) == order_date)
+        .scalar()
+    )
+
+    if total is None:
+        total = 0
+
+    return {"date": order_date, "daily_revenue": total}
