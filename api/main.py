@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import index as indexRoute
+from .routers import items, statistics
 from .models import model_loader
 from .dependencies.config import conf
 from .routers import items
@@ -20,6 +21,8 @@ app.add_middleware(
 )
 
 app.include_router(items.router, prefix="/items", tags=["Items"])
+app.include_router(statistics.router, prefix="/statistics", tags=["Statistics"])
+
 model_loader.index()
 indexRoute.load_routes(app)
 
