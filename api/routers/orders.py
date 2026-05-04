@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Path
 from sqlalchemy.orm import Session
 from ..controllers import orders as controller
 from ..schemas import orders as schema
@@ -35,6 +35,6 @@ def delete(item_id: int = Path(..., gt=0, title="ID of the order to delete"), db
     
     return controller.delete(db=db, item_id=item_id)
 
-@router.get("/{item_id}/status", response_model_schema.OrderStatus)
+@router.get("/{item_id}/status", response_model=schema.OrderStatus)
 def read_delivery_status(item_id: int, db: Session = Depends(get_db)):
     return controller.read_status(db, item_id=item_id)
