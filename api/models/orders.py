@@ -25,3 +25,4 @@ class Order(Base):
     )
 
     order_details = relationship("OrderDetail", back_populates="order")
+    payment = relationship("Payment", back_populates="order", cascade="all, delete-orphan")
