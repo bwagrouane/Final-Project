@@ -9,5 +9,5 @@ class Payment(Base):
     order_id = Column(Integer, ForeignKey("orders.id"), nullable=False)
     amount = Column(DECIMAL(10, 2), nullable=False)
     payment_date = Column(DATETIME, default=datetime.now)
-    payment_method = Column(String(50))
+    payment_method = Column(String(50), nullable=False)
     status = Column(String(50), default="pending")
