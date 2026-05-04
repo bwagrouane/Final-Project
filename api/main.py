@@ -27,6 +27,8 @@ app.include_router(payments.router, prefix="/payments", tags=["Payments"])
 
 app.include_router(reviews.router)
 
+app.include_router(reviews.router)
+
 model_loader.index()
 indexRoute.load_routes(app)
 
