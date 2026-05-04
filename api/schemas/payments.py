@@ -15,6 +15,4 @@ class PaymentResponse(PaymentBase):
     id: int
     payment_date: datetime
     status: str
-    transaction_reference: Optional[str]
-
     model_config = ConfigDict(from_attributes=True)
