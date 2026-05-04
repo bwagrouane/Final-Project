@@ -9,7 +9,7 @@ class PaymentBase(BaseModel):
     order_id: int
 
 class PaymentCreate(PaymentBase):
-    transaction_reference: Optional[str] = None
+   pass
 
 class PaymentResponse(PaymentBase):
     id: int
