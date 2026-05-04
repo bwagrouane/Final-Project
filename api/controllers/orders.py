@@ -115,3 +115,17 @@ def delete(db: Session, item_id):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+#Status of the order
+def read_status(db: Session, item_id: int):
+    try:
+        order = db.query(model.Order).filter(model.Order.id == item_id).first()
+        if not order:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Order ID not found!"
+            )
+        return order
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
