@@ -1,8 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from ..schemas.payments import PaymentCreate, PaymentResponse
+from ..controllers import payments
+from ..dependencies.database import get_db
 
-router = APIRouter(prefix="/payments", tags=["Payments"])
+from ..models.payments import Payment
+from ..models.orders import Order
+
+router = APIRouter()
 
 @router.post("/", response_model=PaymentResponse)
 def create_payment(payment: PaymentCreate, db: Session = Depends(get_db)):
