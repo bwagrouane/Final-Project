@@ -103,16 +103,16 @@ def update(db: Session, item_id, request):
 
 def delete(db: Session, item_id):
     try:
-        item = db.query(model.Order).filter(model.Order.id == item_id)
-        if not item.first():
+        db_item = db.query(model.Order).filter(model.Order.id == item_id).first()
+        if not db_item.first():
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Id not found!")
-        #Cancelling
-        if item.status not in [model.OrderStatus.received, model.OrderStatus.packaging]:
+
+        if db_item.status not in [model.OrderStatus.received, model.OrderStatus.packaging]:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST, 
-                detail=f"Cannot delete an order that is already {item.status}")
+                detail=f"Cannot delete an order that is already {db_item.status}")
 
-        item.delete(synchronize_session=False)
+        db.delete(db_item)
         db.commit()
 
     except SQLAlchemyError as e:
