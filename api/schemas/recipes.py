@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
 from .resources import Resource
-from .sandwiches import Sandwich
+from .reviews import Sandwich
 
 
 class RecipeBase(BaseModel):

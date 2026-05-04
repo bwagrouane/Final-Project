@@ -5,7 +5,7 @@ from .routers import index as indexRoute
 from .routers import items, statistics, orders
 from .models import model_loader
 from .dependencies.config import conf
-from .routers import items
+from .routers import items, reviews
 
 
 app = FastAPI()
@@ -22,6 +22,8 @@ app.add_middleware(
 
 app.include_router(items.router, prefix="/items", tags=["Items"])
 app.include_router(statistics.router, prefix="/statistics", tags=["Statistics"])
+
+app.include_router(reviews.router)
 
 model_loader.index()
 indexRoute.load_routes(app)
