@@ -31,7 +31,7 @@ def update(item_id: int, request: schema.OrderUpdate, db: Session = Depends(get_
 
 
 @router.delete("/{item_id}")
-def delete(item_id: int = Path(..., gt=0, title-"ID of the order to delete"), db: Session = Depends(get_db)):
+def delete(item_id: int = Path(..., gt=0, title="ID of the order to delete"), db: Session = Depends(get_db)):
     
     return controller.delete(db=db, item_id=item_id)
 
