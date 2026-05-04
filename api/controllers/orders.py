@@ -110,7 +110,7 @@ def delete(db: Session, item_id):
         if item.status not in [model.OrderStatus.received, model.OrderStatus.packaging]:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST, 
-                detail=f"Cannot delete an order that is already {item.status}"
+                detail=f"Cannot delete an order that is already {item.status}")
 
         item.delete(synchronize_session=False)
         db.commit()
