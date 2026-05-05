@@ -8,8 +8,8 @@ from sqlalchemy import func
 def create(db: Session, request):
     new_item = model.OrderDetail(
         order_id=request.order_id,
-        sandwich_id=request.sandwich_id,
-        amount=request.amount
+        item_id=request.item_id,
+        quantity=request.quantity
     )
 
     try:
