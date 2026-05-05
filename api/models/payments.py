@@ -1,6 +1,8 @@
 from sqlalchemy import Column, Integer, String, DECIMAL, DATETIME, ForeignKey
+from sqlalchemy.orm import relationship
 from ..dependencies.database import Base
 from datetime import datetime
+
 
 class Payment(Base):
     __tablename__ = "payments"
@@ -11,3 +13,5 @@ class Payment(Base):
     payment_date = Column(DATETIME, default=datetime.now)
     payment_method = Column(String(50), nullable=False)
     status = Column(String(50), default="pending")
+
+    order = relationship("Order", back_populates="payment")
